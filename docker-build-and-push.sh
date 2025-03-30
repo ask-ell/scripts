@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if [ "$DOCKER_REGISTRY_TOKEN" == "" ]; then
-    echo "'DOCKER_REGISTRY_TOKEN' is missing as environment variable"
+if [ "$CONTAINER_REGISTRY_TOKEN" == "" ]; then
+    echo "'CONTAINER_REGISTRY_TOKEN' is missing as environment variable"
     exit 1
 fi
 
-if [ "$DOCKER_REGISTRY_DOMAIN" == "" ]; then
-    echo "'DOCKER_REGISTRY_DOMAIN' is missing as environment variable"
+if [ "$CONTAINER_REGISTRY_DOMAIN" == "" ]; then
+    echo "'CONTAINER_REGISTRY_DOMAIN' is missing as environment variable"
     exit 1
 fi
 
@@ -17,7 +17,7 @@ if [ "$IMAGE_BASE_NAME" == "" ]; then
     exit 1
 fi
 
-echo "$DOCKER_REGISTRY_TOKEN" | docker login "$DOCKER_REGISTRY_DOMAIN" -u nologin --password-stdin
-IMAGE_TAG="$DOCKER_REGISTRY_DOMAIN/$IMAGE_BASE_NAME:$CI_COMMIT_BRANCH"
+echo "$CONTAINER_REGISTRY_TOKEN" | docker login "$CONTAINER_REGISTRY_DOMAIN" -u nologin --password-stdin
+IMAGE_TAG="$CONTAINER_REGISTRY_DOMAIN/$IMAGE_BASE_NAME:$CI_COMMIT_BRANCH"
 docker build -t "$IMAGE_TAG" .
 docker push "$IMAGE_TAG"
