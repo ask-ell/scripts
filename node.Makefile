@@ -3,7 +3,7 @@ ASK_VERSION := "0.0.3"
 .PHONY: reload-makefile
 # Reload Makefile from latest Ask version
 reload-makefile:
-	curl -o Makefile https://raw.githubusercontent.com/ask-ell/scripts/refs/heads/develop/node.Makefile
+	curl -o Makefile https://raw.githubusercontent.com/ask-ell/scripts/refs/heads/release/node.Makefile
 
 .PHONY: help
 # Show help
