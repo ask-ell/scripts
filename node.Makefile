@@ -1,4 +1,4 @@
-ASKELL_MAKEFILE_VERSION := "0.0.1"
+ASKELL_MAKEFILE_VERSION := "0.0.2"
 
 .PHONY: reload-makefile
 reload-makefile:
@@ -28,10 +28,17 @@ build/last_build:
 serve: .env node_modules/last_install
 	npm run start:dev
 
+.PHONY: format
+format:
+	npm run format
+
+.PHONY: lint
+lint:
+	npm run lint
+
 .PHONY: test
 test: node_modules/last_install
 	npm run test
-	npm run test:e2e
 
 .PHONY: test-watch
 test-watch: node_modules/last_install
