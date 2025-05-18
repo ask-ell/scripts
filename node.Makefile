@@ -1,5 +1,9 @@
 ASKELL_MAKEFILE_VERSION := "0.0.2"
 
+.PHONY: help
+help:
+	curl https://raw.githubusercontent.com/ask-ell/scripts/refs/heads/develop/makefile.help.sh | bash "$(MAKEFILE_LIST)"
+
 .PHONY: reload-makefile
 reload-makefile:
 	curl -o Makefile https://raw.githubusercontent.com/ask-ell/scripts/refs/heads/develop/node.Makefile
@@ -16,7 +20,7 @@ node_modules/last_install:
 	@make install
 
 .PHONY: build
-build: .env
+build:
 	npm run build
 	mkdir -p build
 	date > build/last_build
