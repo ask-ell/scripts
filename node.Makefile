@@ -1,3 +1,9 @@
+ASKELL_MAKEFILE_VERSION := "0.0.1"
+
+.PHONY: reload-makefile
+reload-makefile:
+	curl -o Makefile https://raw.githubusercontent.com/ask-ell/scripts/refs/heads/develop/node.Makefile
+
 .env:
 	cp .env.sample .env
 
