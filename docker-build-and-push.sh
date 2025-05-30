@@ -25,6 +25,7 @@ fi
 IMAGE_BASE_NAME="$PROJECT_NAME-$SERVICE_NAME"
 
 echo "$CONTAINER_REGISTRY_TOKEN" | docker login "$CONTAINER_REGISTRY_DOMAIN" -u nologin --password-stdin
+
 IMAGE_TAG="$CONTAINER_REGISTRY_DOMAIN/$IMAGE_BASE_NAME:$CI_COMMIT_BRANCH"
-docker build -t "$IMAGE_TAG" --file "config/$SERVICE_NAME" .
+docker build -t "$IMAGE_TAG" --file "config/$SERVICE_NAME/Dockerfile" .
 docker push "$IMAGE_TAG"
